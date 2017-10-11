@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Movimentação</title>
+        <h:outputStylesheet library="css" name="bootstrap.min.css" />
+        <h:outputScript library="js" name="bootstrap.min.js" />
+        <h:outputScript library="js" name="jquery-3.2.1.min.js" />
+        <h:outputScript library="js" name="primefaces-calendar-ptbr.js" />
+    </h:head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <h:form id="formMovimento">
+                        <fieldset>
+                            <legend align="center" style="background-color: #ebebeb">Movimentação do Processo</legend>
+                            <div class="form-group">
+                                <h:outputLabel for="codigo" value="Codigo" />
+                                <h:inputText id="codigo" value="#{processoBean.processo.pro_Codigo}" size="12" maxlength="10" />              
+                                <h:outputLabel for="processo" value="Processo" style="margin-left: 20px" />
+                                <h:inputText id="processo" value="#{processoBean.processo.pro_Processo}" size="57" maxlength="55" />                                
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="movimento" value="Teve movimento?" />
+                                <input type="checkbox" name="MovSN" value="#{processoBean.processo.pro_Mov}" />
+                                <h:outputLabel for="dtmovi" value="Data do movimento" style="margin-left: 20px" />
+                                <p:calendar id="dtmovi" value="#{processoBean.processo.pro_MovDt.time}" locale="pt_BR" pattern="dd/MM/yyyy" showOn="button" />                    
+                                
+                            </div>
+                            <div>
+                                <h:outputLabel for="situacao" value="Situação" />
+                                <h:inputText id="situacao" value="#{processoBean.processo.pro_Situacao}" size="6" maxlength="4" />
+                                <h:outputLabel for="loteamento" value="Loteamento" style="margin-left: 20px" />
+                                <h:inputText id="loteamento" value="#{processoBean.loteamento.ltm_Loteamento}" size="12" maxlength="10" />                                                                                            
+                            </div>
+                        </fieldset>
+                        
+                    </h:form> 
+                </div>
+                <div class="col-md-4">
+                    <h:form id="formListaProcessos">
+                    <h:column>
+                        <f:facet name="header">Id</f:facet>
+                        <h:outputText value="#{processo.pro_Id}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Processos</f:facet>
+                        <h:outputText value="#{processoBean.processo.pro_Processo}" />     
+                    </h:column>
+                    <h:column>
+                        <h:link id="linkpro" value="#{processoBean.processo.pro_HiperLink}" />   
+                    </h:column>    
+                    <h:column>
+                        <h:commandButton value="editar" action="#{processoBean.editar(processo)}" styleClass="btn btn-success btn-block">
+                                  <f:ajax execute="@form" render="@all" />
+                         </h:commandButton>   
+                    </h:column>
+                    </h:form>     
+    
+                </div>
+            </div>            
+        </div>
+        
+    </body>
+</html>

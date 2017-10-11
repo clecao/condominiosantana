@@ -8,11 +8,12 @@
         <title>Proprietários</title>
     </h:head>
     <h:body>
-        <h2>Proprietários</h2>
+        <h2 align="center">Proprietários</h2>
         <fieldset>
             <legend>Dados do Proprietário</legend>
             <h:form>
                 <h:panelGrid columns="6">
+                    
                     <h:outputLabel value="Nome" for="don_NomeCompleto" />
                     <h:inputText id="don_NomeCompleto" required="true" requiredMessage="Digite o nome do Proprietário." size="42" maxlength="40" value="#{proprietarioBean.proprietario.don_NomeCompleto}" />
                     <h:outputLabel value="Apelido" for="don_Nome" />
@@ -27,10 +28,12 @@
                     <h:inputText id="don_EndComplemento" size="22" maxlength="20" value="#{proprietarioBean.proprietario.don_EndComplemento}" />
                     <h:outputLabel value="Bairro" for="don_EndBairro" />
                     <h:inputText id="don_EndBairro" size="22" maxlength="20" value="#{proprietarioBean.proprietario.don_EndBairro}" />
-                    <h:outputLabel value="Cidade/UF" for="don_EndCidade" />
+                    
+                    <h:outputLabel value="Cidade/UF" for="don_EndCidade" />                   
                     <h:inputText id="don_EndCidade" size="22" maxlength="20" value="#{proprietarioBean.proprietario.don_EndCidade}" />
                     <h:outputLabel value="-" for="don_EndUf" />
                     <h:inputText id="don_EndUf" size="3" maxlength="2" value="#{proprietarioBean.proprietario.don_EndUf}" />
+                    
                     <h:outputLabel value="CEP" for="don_EndCep" />
                     <h:inputText id="don_EndCep" size="11" maxlength="9" value="#{proprietarioBean.proprietario.don_EndCep}" />
                     <h:outputLabel value=""/>
@@ -40,7 +43,7 @@
                     <h:outputLabel value="OBS" for="don_Obs" />
                     <h:inputTextarea id="don_Obs" value="#{proprietarioBean.proprietario.don_Obs}" />
                     <h:commandButton value="Salvar" action="#{proprietarioBean.salvar}" />
-                    <h:commandButton value="Limpar" action="#{proprietarioBean.linpar()}"    />
+                    <h:commandButton value="Limpar" action="#{proprietarioBean.linpar()}" />
                     
                 </h:panelGrid>
             </h:form>

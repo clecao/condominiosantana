@@ -16,6 +16,7 @@ public class ProprietarioBean {
         ProprietarioDAO dao = new ProprietarioDAO();
         if (this.proprietario.getDon_Id() == 0) {
             dao.insert(this.proprietario);
+            
         } else {
             dao.update(this.proprietario);
         }
