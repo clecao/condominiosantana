@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Imóveis</title>
+        <h:outputStylesheet library="css" name="bootstrap.min.css" />
+        <h:outputScript library="js" name="bootstrap.min.js" />
+        <h:outputScript library="js" name="jquery-3.2.1.min.js" />
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h:form id="formCadastroImovel">
+                        <fieldset>
+                            <legend>Dados do Imovel</legend>
+                            <div class="form-group">
+                                <h:outputLabel for="lote" value="Lote" />
+                                <h:inputText id="lote" value="#{imovelBean.imovel.imo_Lote}" styleClass="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="quadra" value="Quadra" />
+                                <h:inputText id="quadra" value="#{imovelBean.imovel.imo_Quadra}" styleClass="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="proprietario" value="Proprietario" />
+                                <h:selectOneMenu id="proprietario" value="#{imovelBean.imovel.proprietario}" converter="proprietarioConverter"  styleClass="form-control">
+                                    <f:selectItem itemLabel="Escolha o Proprietario" itemDisabled="true" />
+                                    <f:selectItems value="#{imovelBean.proprietarios}" var="proprietario" itemLabel="#{proprietario.don_Nome}" itemValue="#{proprietario}" />
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="sequencial" value="Sequencial" />
+                                <h:inputText id="sequencial" value="#{imovelBean.imovel.imo_Sequencial}" styleClass="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="inscricao" value="Inscrição" />
+                                <h:inputText id="inscricao" value="#{imovelBean.imovel.imo_Inscrição}" styleClass="form-control" />
+                            </div>
+                            <h:commandButton value="Salvar" action="#{imovelBean.salvar}" styleClass="btn btn-primary btn-block">
+                                <f:ajax execute="@form" render="@form :formListarImovel" />
+                            </h:commandButton>
+                        </fieldset>                        
+                    </h:form>
+                </div>
+                <div class="col-md-6">
+                    <h:form id="formListarImovel">
+                        <fieldset>
+                            <legend>Imóveis Cadastrados</legend>
+                            <h:dataTable id="tabelaImoveis" value="#{imovelBean.imovels}" var="imovel" styleClass="table table-striped table-hover">
+                                <h:column>
+                                    <f:facet name="header">Lotes</f:facet>
+                                    <h:outputText value="#{imovel.imo_Lote}" />
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Quadras</f:facet>
+                                    <h:outputText value="#{imovel.imo_Quadra}" />
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Proprietarios</f:facet>
+                                    <h:outputText value="#{imovel.proprietario.don_Nome}" />
+                                </h:column>
+                                <h:column>
+                                    <h:commandButton value="Editar" action="#{imovelBean.editar(imovel)}" styleClass="btn btn-success btn-block">
+                                        <f:ajax execute="@form" render="@all" />
+                                    </h:commandButton>
+                                </h:column>
+                                <h:column>
+                                    <h:commandButton value="Excluir" action="#{imovelBean.remover(imovel)}" styleClass="btn btn-success btn-block">
+                                        <f:ajax execute="@form" render="@all" />
+                                    </h:commandButton>
+                                </h:column>
+                            
+                            </h:dataTable>
+                        </fieldset>
+                        
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </h:body>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <body>
+        <div>TODO write content</div>
+    </body>
+</html>

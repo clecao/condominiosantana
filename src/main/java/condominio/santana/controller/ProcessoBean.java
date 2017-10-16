@@ -1,4 +1,4 @@
-package condominio.santana.converter;
+package condominio.santana.controller;
 
 import condominio.santana.dao.ImovelDAO;
 import condominio.santana.dao.LoteamentoDAO;
@@ -32,9 +32,18 @@ public class ProcessoBean {
         this.processo=new Processo();
     }
     
+    public void linpar() {
+        ProcessoDAO dao = new ProcessoDAO();
+        this.processo = new Processo();
+    }
+    
     public void excluir(Processo processo){
         ProcessoDAO dao = new ProcessoDAO();
         dao.delete(processo);
+    }
+    
+     public void editar(Processo processo) {
+        this.processo = processo;
     }
     
     public List<Vara>getVaras(){
@@ -80,11 +89,5 @@ public class ProcessoBean {
     public void setLoteamento(Loteamento loteamento) {
         this.loteamento = loteamento;
     }
-    
-    public void editar(Processo processo) {
-        this.processo = processo;
-    }
-    
-    
     
 }

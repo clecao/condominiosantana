@@ -10,7 +10,7 @@
     <h:body>
         <h2 align="center">Proprietários</h2>
         <fieldset>
-            <legend>Dados do Proprietário</legend>
+            <legend align="center">Dados do Proprietário</legend>
             <h:form>
                 <h:panelGrid columns="6">
                     
@@ -27,52 +27,50 @@
                     <h:outputLabel value="Nº e complemento" for="don_EndComplemento" />
                     <h:inputText id="don_EndComplemento" size="22" maxlength="20" value="#{proprietarioBean.proprietario.don_EndComplemento}" />
                     <h:outputLabel value="Bairro" for="don_EndBairro" />
-                    <h:inputText id="don_EndBairro" size="22" maxlength="20" value="#{proprietarioBean.proprietario.don_EndBairro}" />
-                    
+                    <h:inputText id="don_EndBairro" size="22" maxlength="20" value="#{proprietarioBean.proprietario.don_EndBairro}" />                    
                     <h:outputLabel value="Cidade/UF" for="don_EndCidade" />                   
                     <h:inputText id="don_EndCidade" size="22" maxlength="20" value="#{proprietarioBean.proprietario.don_EndCidade}" />
-                    <h:outputLabel value="-" for="don_EndUf" />
-                    <h:inputText id="don_EndUf" size="3" maxlength="2" value="#{proprietarioBean.proprietario.don_EndUf}" />
-                    
+                    <h:outputLabel value="-" for="don_EndUf" style="margin-left: -180px" />
+                    <h:inputText id="don_EndUf" style="margin-left: -285px" size="3" maxlength="2" value="#{proprietarioBean.proprietario.don_EndUf}" />                    
                     <h:outputLabel value="CEP" for="don_EndCep" />
                     <h:inputText id="don_EndCep" size="11" maxlength="9" value="#{proprietarioBean.proprietario.don_EndCep}" />
-                    <h:outputLabel value=""/>
+                   
+                    <h:outputLabel value="OBS" for="don_Obs" />
+                    <h:inputTextarea id="don_Obs" value="#{proprietarioBean.proprietario.don_Obs}" cols="50" />
+                     <h:outputLabel value=""/>
                     <h:outputLabel value=""/>
                     <h:outputLabel value=""/>
                      <h:outputLabel value=""/>
-                    <h:outputLabel value="OBS" for="don_Obs" />
-                    <h:inputTextarea id="don_Obs" value="#{proprietarioBean.proprietario.don_Obs}" />
                     <h:commandButton value="Salvar" action="#{proprietarioBean.salvar}" />
-                    <h:commandButton value="Limpar" action="#{proprietarioBean.linpar()}" />
+                    <h:commandButton value="Limpar" action="#{proprietarioBean.linpar()}" style="margin-left: 50px" />
                     
                 </h:panelGrid>
             </h:form>
         </fieldset>
-        <fieldset>
-            <legend>Lista de Proprietários</legend>
-            <h:form>
+        <fieldset style="margin-left: 200px; margin-right: 200px">
+            <legend align="center">Proprietários Cadastrados</legend>
+            <h:form style="margin-left: 120px">
+                
                 <h:dataTable value="#{proprietarioBean.proprietarios}" var="proprietario">
                     <h:column>
-                        <f:facet name="header">Id</f:facet>
-                        <h:outputText value="#{proprietario.don_Id}" />
+                    <f:facet name="header">Proprietário</f:facet>
+                    <h:outputText value="#{proprietario.don_NomeCompleto}" /> 
                     </h:column>
+                    
                     <h:column>
-                        <f:facet name="header">Proprietário</f:facet>
-                        <h:outputText value="#{proprietario.don_NomeCompleto}" />
-                    </h:column>
-                    <h:column>
+                        <label style="margin-left: 50px"></label>
                         <f:facet name="header">Apelido</f:facet>
                         <h:outputText value="#{proprietario.don_Nome}" />
+                    </h:column> 
+                    <h:column>
+                        <h:commandLink style="margin-left: 50px" value="Editar" action="#{proprietarioBean.editar(proprietario)}" />
                     </h:column>
                     <h:column>
-                        <h:commandLink value="editar" action="#{proprietarioBean.editar(proprietario)}" />
-                    </h:column>
-                    <h:column>
-                        <h:commandLink value="remover" action="#{proprietarioBean.remover(proprietario)}" />
-                    </h:column>
-                </h:dataTable>
+                        <h:commandLink style="margin-left: 50px" value="Remover" action="#{proprietarioBean.remover(proprietario)}" />
+                    </h:column>        
+                </h:dataTable>   
             </h:form>
-        </fieldset>
+        </fieldset>    
 
     </h:body>
 </html>

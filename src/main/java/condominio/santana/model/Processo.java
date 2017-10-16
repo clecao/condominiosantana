@@ -19,6 +19,7 @@ public class Processo implements Serializable{
     private String pro_Codigo;
     private String pro_Processo;
     private String pro_HiperLink;
+    private String pro_Psq;
     private boolean pro_Mov;
     @Temporal(TemporalType.DATE)
     private Calendar pro_MovDt = Calendar.getInstance();
@@ -55,11 +56,12 @@ public class Processo implements Serializable{
     public Processo() {
     }
 
-    public Processo(int pro_Id, String pro_Codigo, String pro_Processo, String pro_HiperLink, boolean pro_Mov, String pro_Situacao, String pro_Penhora, String Pro_Embargo, String pro_ImpugnacaoData, String pro_TJ, String pro_TransitadoEmJulgado, String pro_SentecaProcedencia, String pro_Idenizacao, String pro_OBS, Vara vara, Imovel imovel) {
+    public Processo(int pro_Id, String pro_Codigo, String pro_Processo, String pro_HiperLink, String pro_Psq, boolean pro_Mov, String pro_Situacao, String pro_Penhora, String Pro_Embargo, String pro_ImpugnacaoData, String pro_TJ, String pro_TransitadoEmJulgado, String pro_SentecaProcedencia, String pro_Idenizacao, String pro_OBS, Vara vara, Imovel imovel) {
         this.pro_Id = pro_Id;
         this.pro_Codigo = pro_Codigo;
         this.pro_Processo = pro_Processo;
         this.pro_HiperLink = pro_HiperLink;
+        this.pro_Psq = pro_Psq;
         this.pro_Mov = pro_Mov;
         this.pro_Situacao = pro_Situacao;
         this.pro_Penhora = pro_Penhora;
@@ -104,6 +106,14 @@ public class Processo implements Serializable{
 
     public void setPro_HiperLink(String pro_HiperLink) {
         this.pro_HiperLink = pro_HiperLink;
+    }
+
+    public String getPro_Psq() {
+        return pro_Psq;
+    }
+
+    public void setPro_Psq(String pro_Psq) {
+        this.pro_Psq = pro_Psq;
     }
 
     public boolean isPro_Mov() {
@@ -269,7 +279,7 @@ public class Processo implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + this.pro_Id;
+        hash = 59 * hash + this.pro_Id;
         return hash;
     }
 
@@ -298,6 +308,9 @@ public class Processo implements Serializable{
             return false;
         }
         if (!Objects.equals(this.pro_HiperLink, other.pro_HiperLink)) {
+            return false;
+        }
+        if (!Objects.equals(this.pro_Psq, other.pro_Psq)) {
             return false;
         }
         if (!Objects.equals(this.pro_Situacao, other.pro_Situacao)) {
@@ -362,8 +375,9 @@ public class Processo implements Serializable{
 
     @Override
     public String toString() {
-        return "Processo{" + "pro_Id=" + pro_Id + ", pro_Codigo=" + pro_Codigo + ", pro_Processo=" + pro_Processo + ", pro_HiperLink=" + pro_HiperLink + ", pro_Mov=" + pro_Mov + ", pro_MovDt=" + pro_MovDt + ", pro_ExcecaoData=" + pro_ExcecaoData + ", pro_EmbargoData=" + pro_EmbargoData + ", pro_NossaResposta=" + pro_NossaResposta + ", pro_ApelacaoData=" + pro_ApelacaoData + ", pro_Contrarrazao=" + pro_Contrarrazao + ", pro_IdenizacaoData=" + pro_IdenizacaoData + ", pro_ObsData=" + pro_ObsData + ", pro_Situacao=" + pro_Situacao + ", pro_Penhora=" + pro_Penhora + ", Pro_Embargo=" + Pro_Embargo + ", pro_ImpugnacaoData=" + pro_ImpugnacaoData + ", pro_TJ=" + pro_TJ + ", pro_TransitadoEmJulgado=" + pro_TransitadoEmJulgado + ", pro_SentecaProcedencia=" + pro_SentecaProcedencia + ", pro_Idenizacao=" + pro_Idenizacao + ", pro_OBS=" + pro_OBS + ", vara=" + vara + ", imovel=" + imovel + '}';
+        return "Processo{" + "pro_Id=" + pro_Id + ", pro_Codigo=" + pro_Codigo + ", pro_Processo=" + pro_Processo + ", pro_HiperLink=" + pro_HiperLink + ", pro_Psq=" + pro_Psq + ", pro_Mov=" + pro_Mov + ", pro_MovDt=" + pro_MovDt + ", pro_ExcecaoData=" + pro_ExcecaoData + ", pro_EmbargoData=" + pro_EmbargoData + ", pro_NossaResposta=" + pro_NossaResposta + ", pro_ApelacaoData=" + pro_ApelacaoData + ", pro_Contrarrazao=" + pro_Contrarrazao + ", pro_IdenizacaoData=" + pro_IdenizacaoData + ", pro_ObsData=" + pro_ObsData + ", pro_Situacao=" + pro_Situacao + ", pro_Penhora=" + pro_Penhora + ", Pro_Embargo=" + Pro_Embargo + ", pro_ImpugnacaoData=" + pro_ImpugnacaoData + ", pro_TJ=" + pro_TJ + ", pro_TransitadoEmJulgado=" + pro_TransitadoEmJulgado + ", pro_SentecaProcedencia=" + pro_SentecaProcedencia + ", pro_Idenizacao=" + pro_Idenizacao + ", pro_OBS=" + pro_OBS + ", vara=" + vara + ", imovel=" + imovel + '}';
     }
     
+   
     
 }

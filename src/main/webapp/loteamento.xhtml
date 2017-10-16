@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Loteamentos</title>
+        <h:outputStylesheet library="css" name="bootstrap.min.css" />
+        <h:outputScript library="js" name="bootstrap.min.js" />
+        <h:outputScript library="js" name="jquery-3.2.1.min.js" />
+    </h:head>    
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h:form id="formCadastroLoteamento">
+                        <fieldset>
+                            <legend>Dados do Loteamento</legend>
+                            <div class="form-group">
+                                <h:outputLabel for="id" value="ID" />
+                                <h:inputText id="id" value="#{loteamentoBean.loteamento.ltm_Id}" styleClass="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="loteamento" value="Loteamento" />
+                                <h:inputText id="loteamento" value="#{loteamentoBean.loteamento.ltm_Loteamento}" required="true" requiredMessage="Digite o nome do loteamento." styleClass="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="descricao" value="Descrição" />
+                                <h:inputText id="descricao" value="#{loteamentoBean.loteamento.ltm_Descricao}" styleClass="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="obs" value="Observações" />
+                                <h:inputTextarea id="obs" value="#{loteamentoBean.loteamento.ltm_OBS}" styleClass="form-control" />
+                            </div>
+                            <h:commandButton value="Salvar" action="#{loteamentoBean.salvar()}" styleClass="btn btn-primary btn-block">
+                                <f:ajax execute="@form" render="@form :formListaLoteamentos" />
+                            </h:commandButton>                            
+                        </fieldset>
+                    </h:form>
+                </div>
+                <div class="col-md-6">
+                    <h:form id="formListaLoteamentos">
+                        <fieldset>
+                            <legend>Loteamentos cadastrados</legend>
+                            <h:dataTable id="tabelaLeteamentos" value="#{loteamentoBean.loteamentos}" var="loteamento" styleClass="table table-striped table-hover">
+                                <h:column>
+                                    <f:facet name="header">ID</f:facet>
+                                    <h:outputText value="#{loteamento.ltm_Id}" />
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Loteamento</f:facet>
+                                    <h:outputText value="#{loteamento.ltm_Loteamento}" />
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Descrição</f:facet>
+                                    <h:outputText value="#{loteamento.ltm_Descricao}" />
+                                </h:column>
+                                <h:column>
+                                    <h:commandButton value="Editar" action="#{loteamentoBean.editar(loteamento)}" styleClass="btn btn-success btn-block">
+                                        <f:ajax execute="@form" render="@all" />
+                                    </h:commandButton>
+                                </h:column>
+                                <h:column>
+                                    <h:commandButton value="Excluir" action="#{loteamentoBean.remover(loteamento)}" styleClass="btn btn-danger btn-block">
+                                        <f:ajax execute="@form" render="@form" />
+                                    </h:commandButton>
+                                </h:column>
+                            </h:dataTable>
+                        </fieldset>               
+                    </h:form>                    
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>

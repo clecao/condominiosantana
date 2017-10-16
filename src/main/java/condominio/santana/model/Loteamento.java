@@ -14,14 +14,16 @@ public class Loteamento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ltm_Id;
     private String ltm_Loteamento;
+    private String ltm_Descricao;
     private String ltm_OBS;
 
     public Loteamento() {
     }
 
-    public Loteamento(int ltm_Id, String ltm_Loteamento, String ltm_OBS) {
+    public Loteamento(int ltm_Id, String ltm_Loteamento, String ltm_Descricao, String ltm_OBS) {
         this.ltm_Id = ltm_Id;
         this.ltm_Loteamento = ltm_Loteamento;
+        this.ltm_Descricao = ltm_Descricao;
         this.ltm_OBS = ltm_OBS;
     }
 
@@ -41,6 +43,14 @@ public class Loteamento implements Serializable {
         this.ltm_Loteamento = ltm_Loteamento;
     }
 
+    public String getLtm_Descricao() {
+        return ltm_Descricao;
+    }
+
+    public void setLtm_Descricao(String ltm_Descricao) {
+        this.ltm_Descricao = ltm_Descricao;
+    }
+
     public String getLtm_OBS() {
         return ltm_OBS;
     }
@@ -51,8 +61,8 @@ public class Loteamento implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + this.ltm_Id;
+        int hash = 7;
+        hash = 23 * hash + this.ltm_Id;
         return hash;
     }
 
@@ -74,6 +84,9 @@ public class Loteamento implements Serializable {
         if (!Objects.equals(this.ltm_Loteamento, other.ltm_Loteamento)) {
             return false;
         }
+        if (!Objects.equals(this.ltm_Descricao, other.ltm_Descricao)) {
+            return false;
+        }
         if (!Objects.equals(this.ltm_OBS, other.ltm_OBS)) {
             return false;
         }
@@ -82,7 +95,10 @@ public class Loteamento implements Serializable {
 
     @Override
     public String toString() {
-        return "Loteamento{" + "ltm_Id=" + ltm_Id + ", ltm_Loteamento=" + ltm_Loteamento + ", ltm_OBS=" + ltm_OBS + '}';
+        return "Loteamento{" + "ltm_Id=" + ltm_Id + ", ltm_Loteamento=" + ltm_Loteamento + ", ltm_Descricao=" + ltm_Descricao + ", ltm_OBS=" + ltm_OBS + '}';
     }
+    
+    
+    
     
 }

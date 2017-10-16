@@ -13,58 +13,69 @@
         <h:outputScript library="js" name="primefaces-calendar-ptbr.js" />
     </h:head>
     <body>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-8">
-                    <h:form id="formMovimento">
-                        <fieldset>
-                            <legend align="center" style="background-color: #ebebeb">Movimentação do Processo</legend>
-                            <div class="form-group">
-                                <h:outputLabel for="codigo" value="Codigo" />
-                                <h:inputText id="codigo" value="#{processoBean.processo.pro_Codigo}" size="12" maxlength="10" />              
-                                <h:outputLabel for="processo" value="Processo" style="margin-left: 20px" />
-                                <h:inputText id="processo" value="#{processoBean.processo.pro_Processo}" size="57" maxlength="55" />                                
-                            </div>
-                            <div class="form-group">
-                                <h:outputLabel for="movimento" value="Teve movimento?" />
-                                <input type="checkbox" name="MovSN" value="#{processoBean.processo.pro_Mov}" />
-                                <h:outputLabel for="dtmovi" value="Data do movimento" style="margin-left: 20px" />
-                                <p:calendar id="dtmovi" value="#{processoBean.processo.pro_MovDt.time}" locale="pt_BR" pattern="dd/MM/yyyy" showOn="button" />                    
-                                
-                            </div>
-                            <div>
-                                <h:outputLabel for="situacao" value="Situação" />
-                                <h:inputText id="situacao" value="#{processoBean.processo.pro_Situacao}" size="6" maxlength="4" />
-                                <h:outputLabel for="loteamento" value="Loteamento" style="margin-left: 20px" />
-                                <h:inputText id="loteamento" value="#{processoBean.loteamento.ltm_Loteamento}" size="12" maxlength="10" />                                                                                            
-                            </div>
-                        </fieldset>
-                        
-                    </h:form> 
-                </div>
-                <div class="col-md-4">
-                    <h:form id="formListaProcessos">
-                    <h:column>
-                        <f:facet name="header">Id</f:facet>
-                        <h:outputText value="#{processo.pro_Id}" />
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Processos</f:facet>
-                        <h:outputText value="#{processoBean.processo.pro_Processo}" />     
-                    </h:column>
-                    <h:column>
-                        <h:link id="linkpro" value="#{processoBean.processo.pro_HiperLink}" />   
-                    </h:column>    
-                    <h:column>
-                        <h:commandButton value="editar" action="#{processoBean.editar(processo)}" styleClass="btn btn-success btn-block">
-                                  <f:ajax execute="@form" render="@all" />
-                         </h:commandButton>   
-                    </h:column>
-                    </h:form>     
-    
-                </div>
-            </div>            
-        </div>
+    <h2 align="center">Movimento da semana</h2>
+    <fieldset>
+        <legend align="center">Dados do Processo</legend>
+        <h:form>
+            <h:panelGrid columns="6">
+                <h:outputLabel style="margin-left: 5px" value="Código" for="pro_Codigo" />
+               <h:inputText id="pro_Codigo" size="12" maxlength="10" value="#{processoBean.processo.pro_Codigo}" />
+               <h:outputLabel style="margin-left: 5px" value="Processo" for="pro_Processo" />
+               <h:inputText id="pro_Processo" required="true" requiredMessage="Digite o número do processo." size="50" maxlength="55" value="#{processoBean.processo.pro_Processo}" />
+               <h:outputLabel style="margin-left: 5px" for="pro_MovDt" value="Data" />
+               <p:calendar id="pro_MovDt" value="#{processoBean.processo.pro_MovDt.time}" locale="pt_BR" pattern="dd/MM/yyyy" showOn="button" />
+               <h:outputLabel style="margin-left: 5px" for="pro_Psq" value="Auteração?" />
+               <h:selectBooleanCheckbox id="pro_Mov" style="margin-left: 3px" value="#{processoBean.processo.pro_Mov}"/>
+               <h:outputLabel style="margin-left: 5px" for="pro_HiperLink" value="Site" />
+               <h:inputText id="pro_HiperLink" size="50" maxlength="90" value="#{processoBean.processo.pro_HiperLink}" />
+               <h:outputLabel style="margin-left: 5px" for="pro_Embargo" value="Embargo" />
+               <h:inputText id="pro_Embargo" size="30" maxlength="30" value="#{processoBean.processo.pro_Embargo}" />
+               <h:outputLabel style="margin-left: 5px" for="pro_Penhora" value="Penhora" />
+               <h:inputText id="pro_Penhora" size="30" maxlength="30" value="#{processoBean.processo.pro_Penhora}" />
+               <h:outputLabel style="margin-left: 5px" for="pro_Idenizacao" value="Idenização" />
+               <h:inputText id="pro_Idenizacao" size="30" maxlength="30" value="#{processoBean.processo.pro_Idenizacao}" />
+               <h:outputLabel style="margin-left: 5px" for="pro_SentecaProcedencia" value="Sentença" />
+               <h:inputText id="pro_SentecaProcedencia" size="30" maxlength="30" value="#{processoBean.processo.pro_SentecaProcedencia}" />
+               <h:outputLabel value=""/>
+               <h:outputLabel value=""/>
+               <h:outputLabel value=""/>
+               <h:commandButton style="margin-right: 50px" value="Salvar" action="#{processoBean.salvar()}" />
+               <h:commandButton style="margin-right: 50px" value="Limpar" action="#{processoBean.linpar()}" />              
+            </h:panelGrid>
+            
+        </h:form>        
+    </fieldset>
+    <fieldset>
+        <legend align="center">Processos para pesquisa</legend>
+        <h:form style="margin-left: 100px">
+            <h:dataTable  style="background: #c9e2b3" border="1" value="#{processoBean.processos}" var="processo">
+                <h:column>
+                    <label style="margin-left: 10px"></label>
+                    <f:facet name="header">Código</f:facet>
+                    <h:outputText value="#{processo.pro_Codigo}" />
+                    <label style="margin-left: 10px"></label>
+                </h:column>
+                <h:column >
+                    <label style="margin-left: 10px"></label>
+                    <f:facet name="header">     Processo </f:facet>
+                    <h:outputText value="#{processo.pro_Processo}" />
+                    <label style="margin-left: 10px"></label>
+                </h:column>
+                <h:column>
+                    <label style="margin-left: 10px"></label>
+                    <f:facet name="header">Pagina do processo</f:facet>
+                    <h:link title="Processo" value="#{processo.pro_HiperLink}" />
+                    
+                    <label style="margin-left: 10px"></label>
+                </h:column>
+                <h:column>
+                    <label style="margin-left: 10px"></label>
+                    <h:commandLink value="Editar" action="#{processoBean.editar(processo)}" />
+                </h:column>
+            </h:dataTable>
+            
+        </h:form>        
+    </fieldset>
         
     </body>
 </html>

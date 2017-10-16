@@ -1,4 +1,4 @@
-package condominio.santana.converter;
+package condominio.santana.controller;
 
 import condominio.santana.dao.ProprietarioDAO;
 import condominio.santana.model.Proprietario;

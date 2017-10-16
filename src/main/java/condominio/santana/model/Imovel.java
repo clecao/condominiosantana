@@ -18,9 +18,6 @@ public class Imovel implements Serializable {
     private String imo_EndLogradouro;
     private String imo_EndBairro;
     private String imo_EndCEP;
-    private double imo_Fente;
-    private double imo_Fundos;
-    private double imo_Area;
     private String imo_Aquisição;
     private String imo_Sequencial;
     private String imo_Inscrição;
@@ -50,9 +47,6 @@ public class Imovel implements Serializable {
         this.imo_EndLogradouro = imo_EndLogradouro;
         this.imo_EndBairro = imo_EndBairro;
         this.imo_EndCEP = imo_EndCEP;
-        this.imo_Fente = imo_Fente;
-        this.imo_Fundos = imo_Fundos;
-        this.imo_Area = imo_Area;
         this.imo_Aquisição = imo_Aquisição;
         this.imo_Sequencial = imo_Sequencial;
         this.imo_Inscrição = imo_Inscrição;
@@ -116,30 +110,6 @@ public class Imovel implements Serializable {
 
     public void setImo_EndCEP(String imo_EndCEP) {
         this.imo_EndCEP = imo_EndCEP;
-    }
-
-    public double getImo_Fente() {
-        return imo_Fente;
-    }
-
-    public void setImo_Fente(double imo_Fente) {
-        this.imo_Fente = imo_Fente;
-    }
-
-    public double getImo_Fundos() {
-        return imo_Fundos;
-    }
-
-    public void setImo_Fundos(double imo_Fundos) {
-        this.imo_Fundos = imo_Fundos;
-    }
-
-    public double getImo_Area() {
-        return imo_Area;
-    }
-
-    public void setImo_Area(double imo_Area) {
-        this.imo_Area = imo_Area;
     }
 
     public String getImo_Aquisição() {
@@ -284,15 +254,6 @@ public class Imovel implements Serializable {
         if (this.imo_id != other.imo_id) {
             return false;
         }
-        if (Double.doubleToLongBits(this.imo_Fente) != Double.doubleToLongBits(other.imo_Fente)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.imo_Fundos) != Double.doubleToLongBits(other.imo_Fundos)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.imo_Area) != Double.doubleToLongBits(other.imo_Area)) {
-            return false;
-        }
         if (!Objects.equals(this.imo_Quadra, other.imo_Quadra)) {
             return false;
         }
@@ -358,8 +319,10 @@ public class Imovel implements Serializable {
 
     @Override
     public String toString() {
-        return "Imovel{" + "imo_id=" + imo_id + ", imo_Quadra=" + imo_Quadra + ", imo_Lote=" + imo_Lote + ", imo_EndLogradouro=" + imo_EndLogradouro + ", imo_EndBairro=" + imo_EndBairro + ", imo_EndCEP=" + imo_EndCEP + ", imo_Fente=" + imo_Fente + ", imo_Fundos=" + imo_Fundos + ", imo_Area=" + imo_Area + ", imo_Aquisi\u00e7\u00e3o=" + imo_Aquisição + ", imo_Sequencial=" + imo_Sequencial + ", imo_Inscri\u00e7\u00e3o=" + imo_Inscrição + ", imo_Vendido=" + imo_Vendido + ", imo_DataVenda=" + imo_DataVenda + ", imo_Valor=" + imo_Valor + ", imo_SituacaoCartorial=" + imo_SituacaoCartorial + ", imo_Matricula=" + imo_Matricula + ", imo_SitFiscal=" + imo_SitFiscal + ", imo_BaixaPMN=" + imo_BaixaPMN + ", imo_IRPF=" + imo_IRPF + ", imo_Obs=" + imo_Obs + ", comprador=" + comprador + ", proprietario=" + proprietario + ", loteamento=" + loteamento + '}';
+        return "Imovel{" + "imo_id=" + imo_id + ", imo_Quadra=" + imo_Quadra + ", imo_Lote=" + imo_Lote + ", imo_EndLogradouro=" + imo_EndLogradouro + ", imo_EndBairro=" + imo_EndBairro + ", imo_EndCEP=" + imo_EndCEP + ", imo_Aquisi\u00e7\u00e3o=" + imo_Aquisição + ", imo_Sequencial=" + imo_Sequencial + ", imo_Inscri\u00e7\u00e3o=" + imo_Inscrição + ", imo_Vendido=" + imo_Vendido + ", imo_DataVenda=" + imo_DataVenda + ", imo_Valor=" + imo_Valor + ", imo_SituacaoCartorial=" + imo_SituacaoCartorial + ", imo_Matricula=" + imo_Matricula + ", imo_SitFiscal=" + imo_SitFiscal + ", imo_BaixaPMN=" + imo_BaixaPMN + ", imo_IRPF=" + imo_IRPF + ", imo_Obs=" + imo_Obs + ", comprador=" + comprador + ", proprietario=" + proprietario + ", loteamento=" + loteamento + '}';
     }
+
+    
     
     
     
